@@ -1,0 +1,33 @@
+ResNet18 나이 예측 모델 Test 평가 결과
+============================================================
+Test 전체 개수: 7,011
+
+[전체 성능]
+MAE : 6.1019
+RMSE: 8.4282
+오차 3세 이내 비율 : 38.01%
+오차 5세 이내 비율 : 54.99%
+오차 10세 이내 비율: 80.23%
+
+[데이터셋별 성능]
+dataset  count      mae     rmse  mean_true_age  mean_pred_age
+  AIHub   4600 6.512914 8.805814      38.663043      36.435135
+UTKFace   2411 5.317821 7.656274      33.165491      31.436530
+
+[나이대별 성능]
+age_group  count       mae  mean_true_age  mean_pred_age
+      00s    334  2.648076       3.425150       4.780395
+      10s    155  5.294801      14.922581      16.959953
+      20s   2186  4.209949      24.823879      27.378250
+      30s   1455  5.537881      34.402062      32.691251
+      40s   1275  6.314677      42.908235      39.155862
+      50s   1031  8.772799      54.752667      47.399535
+      60s    384  9.823999      61.997396      53.430979
+      70s    121 17.942071      74.586777      58.003102
+      80s     52 11.060121      83.865385      75.441006
+   90plus     18 11.136275      93.555556      83.531998
+
+[저장 파일]
+예측 결과 CSV: C:\Users\svc06\OneDrive\Desktop\future_face_project\outputs\evaluation\test_predictions_resnet18.csv
+데이터셋별 요약 CSV: C:\Users\svc06\OneDrive\Desktop\future_face_project\outputs\evaluation\test_dataset_summary_resnet18.csv
+나이대별 요약 CSV: C:\Users\svc06\OneDrive\Desktop\future_face_project\outputs\evaluation\test_age_group_summary_resnet18.csv

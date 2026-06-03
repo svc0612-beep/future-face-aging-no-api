@@ -1,0 +1,6 @@
+model,best_val_mae,best_epoch
+ConvNeXt-Tiny Fine-tuned,5.699305107600044,1
+ConvNeXt-Tiny Fine-tuned 2nd,5.700891092237668,1
+ConvNeXt-Tiny,5.990370861262258,7
+EfficientNet-B0,6.176049886669788,9
+MobileNetV3,6.267885897868907,12

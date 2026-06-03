@@ -1,0 +1,2 @@
+model,best_val_acc,best_epoch,best_val_loss
+MobileNetV3-Small,0.8819135181726764,5,0.2732274174415171

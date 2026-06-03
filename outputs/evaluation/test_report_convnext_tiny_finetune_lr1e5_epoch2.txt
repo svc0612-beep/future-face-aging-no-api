@@ -1,0 +1,29 @@
+convnext_tiny_finetune_lr1e5_epoch2 Test 평가 결과
+============================================================
+Model path: C:\Users\svc06\OneDrive\Desktop\future_face_project\models\age_estimator\best_convnext_tiny_finetune_lr1e5.pth
+Test count: 7,011
+
+[Overall]
+MAE: 5.4106
+RMSE: 7.4872
+Within 3 years: 41.38%
+Within 5 years: 59.61%
+Within 10 years: 84.30%
+
+[By dataset]
+dataset  count      mae     rmse  mean_true_age  mean_pred_age
+  AIHub   4600 5.763565 7.860983      38.663043      38.126318
+UTKFace   2411 4.737289 6.716438      33.165491      33.104138
+
+[By age group]
+age_group  count       mae  mean_true_age  mean_pred_age
+      00s    334  1.890661       3.425150       4.465678
+      10s    155  4.534880      14.922581      17.000327
+      20s   2186  4.340566      24.823879      28.028153
+      30s   1455  5.382469      34.402062      34.384924
+      40s   1275  5.515903      42.908235      41.729759
+      50s   1031  6.782735      54.752667      50.285166
+      60s    384  7.957091      61.997396      56.238457
+      70s    121 13.546705      74.586777      62.617057
+      80s     52  6.839742      83.865385      78.207472
+   90plus     18 11.306953      93.555556      82.248603

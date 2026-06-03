@@ -1,0 +1,29 @@
+convnext_tiny_full Test 평가 결과
+============================================================
+Model path: C:\Users\svc06\OneDrive\Desktop\future_face_project\models\age_estimator\best_convnext_tiny_full.pth
+Test count: 7,011
+
+[Overall]
+MAE: 5.7122
+RMSE: 7.9482
+Within 3 years: 39.91%
+Within 5 years: 58.58%
+Within 10 years: 82.54%
+
+[By dataset]
+dataset  count      mae     rmse  mean_true_age  mean_pred_age
+  AIHub   4600 6.087095 8.300131      38.663043      37.635979
+UTKFace   2411 4.996794 7.229306      33.165491      32.536202
+
+[By age group]
+age_group  count       mae  mean_true_age  mean_pred_age
+      00s    334  2.401924       3.425150       4.213126
+      10s    155  4.792786      14.922581      17.306046
+      20s   2186  4.256005      24.823879      27.962344
+      30s   1455  5.289344      34.402062      33.523853
+      40s   1275  5.794478      42.908235      40.783866
+      50s   1031  7.982916      54.752667      49.284146
+      60s    384  9.363122      61.997396      56.225550
+      70s    121 14.929317      74.586777      62.607510
+      80s     52  5.320083      83.865385      79.279961
+   90plus     18 11.460172      93.555556      82.095384

@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Virtual environments
+.venv/
+.venv-1/
+venv/
+env/
+
+# Local data and model weights
+data/
+models/
+third_party/
+*.pth
+*.pt
+*.pkl
+*.dat
+
+# Runtime outputs
+outputs/*
+!outputs/reports/
+!outputs/reports/model_summary/
+!outputs/reports/model_summary/*.png
+!outputs/reports/model_summary/*.csv
+!outputs/reports/model_summary/*.html
+!outputs/reports/model_summary/*.md
+!outputs/evaluation/
+!outputs/evaluation/test_report_*.txt
+!outputs/evaluation/test_dataset_summary_*.csv
+!outputs/evaluation/test_age_group_summary_*.csv
+outputs/evaluation/test_predictions_*.csv
+
+# Local notebooks and helper launchers
+notebooks/
+*.bat
+training_monitor.py
+training_status_app.py
+convnext_training_monitor.py
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
