@@ -113,6 +113,37 @@ def render_csv_table(path: Path):
             col.write(cell)
 
 
+def render_weight_change_table():
+    rows = [
+        {
+            "구분": "재학습 전",
+            "가중치 파일": "best_convnext_tiny_full.pth",
+            "역할": "기존 ConvNeXt-Tiny best 모델",
+            "변화 의미": "fine-tuning을 시작하기 전 기준 모델입니다. Test MAE는 5.7122세였습니다.",
+        },
+        {
+            "구분": "재학습 후 best",
+            "가중치 파일": "best_convnext_tiny_finetune_lr1e5.pth",
+            "역할": "최종 웹앱 나이 예측 모델",
+            "변화 의미": "낮은 학습률로 추가 조정된 가중치입니다. Test MAE가 5.4106세로 개선되어 최종 선택했습니다.",
+        },
+        {
+            "구분": "두 번째 추가 epoch last",
+            "가중치 파일": "last_convnext_tiny_finetune_lr1e5_epoch2.pth",
+            "역할": "마지막 추가 학습 상태",
+            "변화 의미": "두 번째 추가 epoch 결과입니다. Validation MAE가 더 좋아지지 않아 best로 채택하지 않았습니다.",
+        },
+    ]
+    headers = ["구분", "가중치 파일", "역할", "변화 의미"]
+    header_cols = st.columns([1.0, 2.2, 1.8, 3.2])
+    for col, header in zip(header_cols, headers):
+        col.markdown(f"**{header}**")
+    for row in rows:
+        row_cols = st.columns([1.0, 2.2, 1.8, 3.2])
+        for col, header in zip(row_cols, headers):
+            col.write(row[header])
+
+
 def show_chart(title: str, image_name: str, caption: str, how_to_read: str, conclusion: str, caution: str | None = None):
     st.markdown('<div class="chart-card">', unsafe_allow_html=True)
     st.subheader(title)
@@ -246,3 +277,17 @@ if test_summary_path.exists():
     render_csv_table(test_summary_path)
 else:
     st.warning("Test 개선 요약 파일이 없습니다.")
+
+st.divider()
+st.subheader("가중치/모델 파일 변화 요약")
+st.markdown(
+    """
+    모델의 **가중치**는 학습으로 조정된 내부 숫자들이고, `.pth` 파일은 그 가중치를 저장한 파일입니다.
+    이번 재학습에서는 원본 ConvNeXt-Tiny 가중치를 낮은 학습률로 조금 더 다듬어 최종 모델을 선택했습니다.
+    """
+)
+render_weight_change_table()
+st.info(
+    "이 표는 사용자가 이해하기 위한 요약입니다. 수백만 개 파라미터의 실제 숫자 변화량을 레이어별로 분석한 표는 아니며, "
+    "어떤 가중치 파일을 기준으로 최종 모델을 선택했는지 설명합니다."
+)
