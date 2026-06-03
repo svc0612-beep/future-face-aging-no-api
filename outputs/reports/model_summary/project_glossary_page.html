@@ -589,6 +589,29 @@
             <span class="tag">성능 최적화</span>
             <p>Automatic Mixed Precision의 약자로, 일부 연산을 낮은 정밀도로 처리해 속도와 메모리를 절약하는 기법입니다.</p>
           </article>
+
+          <article class="term-card" data-keywords="pipeline 파이프라인 자동 실행 작업 묶음">
+            <div class="term-head"><div class="term-title">Pipeline</div><div class="pronounce">파이프라인</div></div>
+            <span class="tag">작업 흐름</span>
+            <p>순서대로 자동 실행되는 작업 묶음입니다.</p>
+            <ul>
+              <li>이번 프로젝트에서는 기존 모델 평가 → 추가 학습 → 다시 평가 → 그래프 생성 → 용어/보고서 정리를 순서대로 실행하는 흐름을 뜻했습니다.</li>
+              <li>사람이 매번 명령을 하나씩 치지 않아도 정해진 순서대로 다음 작업이 이어집니다.</li>
+              <li>단, 사용자가 직접 진행 상황을 볼 수 있도록 별도 진행률 페이지를 두는 것이 중요합니다.</li>
+            </ul>
+          </article>
+
+          <article class="term-card wide" data-keywords="training tuning fine tuning 학습 튜닝 파인튜닝">
+            <div class="term-head"><div class="term-title">Training / Tuning / Fine-tuning</div><div class="pronounce">학습 / 튜닝 / 파인튜닝</div></div>
+            <span class="tag good">핵심 구분</span>
+            <p>모델을 만들거나 개선할 때 자주 헷갈리는 세 가지 용어입니다.</p>
+            <ul>
+              <li><strong>학습:</strong> 모델을 처음부터 또는 크게 훈련시키는 것입니다.</li>
+              <li><strong>튜닝:</strong> 이미 학습된 모델을 목적에 맞게 조금 더 조정하는 것입니다.</li>
+              <li><strong>파인튜닝:</strong> 튜닝 중에서도 기존 가중치를 가져와서 새 데이터나 새 목표에 맞게 이어 학습하는 방식입니다.</li>
+              <li>이번 나이 예측 개선은 ConvNeXt-Tiny 기존 best 가중치를 가져와 낮은 학습률로 이어 학습한 파인튜닝입니다.</li>
+            </ul>
+          </article>
         </div>
       </section>
 
