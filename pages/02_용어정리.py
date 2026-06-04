@@ -22,6 +22,7 @@ def embed_local_images(html: str) -> str:
         "age_val_mae_comparison.png",
         "age_val_loss_comparison.png",
         "age_model_best_mae_bar.png",
+        "age_test_mae_improvement.png",
         "gender_training_metrics.png",
     ]
     for image_name in image_names:
