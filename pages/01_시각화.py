@@ -182,7 +182,6 @@ with st.sidebar:
     st.page_link("pages/01_시각화.py", label="시각화")
     st.page_link("pages/02_용어정리.py", label="용어정리")
     st.page_link("pages/03_다운로드공간.py", label="다운로드공간")
-    st.page_link("pages/04_현재작업.py", label="현재작업")
     st.page_link("pages/05_프로젝트흐름.py", label="프로젝트흐름")
 
 st.markdown(
