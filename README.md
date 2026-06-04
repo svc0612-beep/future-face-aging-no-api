@@ -44,12 +44,10 @@ API 없이 로컬 모델로 동작하는 안면 에이징 웹앱 프로젝트입
 ```text
 app.py
 config.py
-progress_monitor.py
 pages/
   01_시각화.py
   02_용어정리.py
   03_다운로드공간.py
-  04_현재작업.py
   05_프로젝트흐름.py
 src/
   predict_age.py
@@ -90,6 +88,23 @@ third_party/SAM/shape_predictor_68_face_landmarks.dat
 ```
 
 SAM 관련 파일이 없으면 웹앱은 rule-based aging fallback을 사용합니다.
+
+## Streamlit Community Cloud 배포 전 확인
+
+Streamlit Community Cloud는 GitHub 저장소에 올라간 파일을 기준으로 앱을 실행합니다.
+
+- Entry point: `app.py`
+- Python dependencies: `requirements.txt`
+- 대용량 모델 가중치와 원본 데이터셋은 GitHub에 포함하지 않음
+- 나이/성별 모델 파일이 없으면 분석 버튼 실행 시 모델 파일 오류가 날 수 있음
+- SAM 파일이 없으면 rule-based aging fallback으로 미래 얼굴 시뮬레이션을 표시함
+
+배포 환경에서 나이/성별 예측까지 실제로 동작시키려면 아래 모델 파일을 별도 방식으로 준비해야 합니다.
+
+```text
+models/age_estimator/best_convnext_tiny_finetune_lr1e5.pth
+models/gender_classifier/best_gender_mobilenet_v3_small.pth
+```
 
 ## 제외한 항목
 

@@ -3,9 +3,13 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 import cv2
-import dlib
 import numpy as np
 from PIL import Image
+
+try:
+    import dlib
+except ImportError:
+    dlib = None
 
 
 class FaceNotDetectedError(ValueError):
@@ -42,6 +46,8 @@ def _opencv_faces(rgb_array: np.ndarray) -> list[tuple[int, int, int, int]]:
 
 
 def _dlib_faces(rgb_array: np.ndarray) -> list[tuple[int, int, int, int]]:
+    if dlib is None:
+        return []
     detector = dlib.get_frontal_face_detector()
     detected = detector(rgb_array, 1)
     return [
@@ -92,4 +98,3 @@ def crop_largest_face(image: Image.Image) -> FaceCropResult:
         detector=detector_name,
         box=crop_box,
     )
-
