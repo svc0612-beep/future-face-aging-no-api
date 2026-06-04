@@ -45,6 +45,7 @@ with st.sidebar:
     st.page_link("pages/02_용어정리.py", label="용어정리")
     st.page_link("pages/03_다운로드공간.py", label="다운로드공간")
     st.page_link("pages/04_현재작업.py", label="현재작업")
+    st.page_link("pages/05_프로젝트흐름.py", label="프로젝트흐름")
 
 if not GLOSSARY_PATH.exists():
     st.error("용어 정리 HTML 파일을 찾을 수 없습니다.")
@@ -53,3 +54,4 @@ if not GLOSSARY_PATH.exists():
 
 html = embed_local_images(GLOSSARY_PATH.read_text(encoding="utf-8"))
 components.html(html, height=1400, scrolling=True)
+

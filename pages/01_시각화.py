@@ -183,6 +183,7 @@ with st.sidebar:
     st.page_link("pages/02_용어정리.py", label="용어정리")
     st.page_link("pages/03_다운로드공간.py", label="다운로드공간")
     st.page_link("pages/04_현재작업.py", label="현재작업")
+    st.page_link("pages/05_프로젝트흐름.py", label="프로젝트흐름")
 
 st.markdown(
     """
@@ -291,3 +292,4 @@ st.info(
     "이 표는 사용자가 이해하기 위한 요약입니다. 수백만 개 파라미터의 실제 숫자 변화량을 레이어별로 분석한 표는 아니며, "
     "어떤 가중치 파일을 기준으로 최종 모델을 선택했는지 설명합니다."
 )
+

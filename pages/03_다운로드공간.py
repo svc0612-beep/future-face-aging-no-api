@@ -32,6 +32,7 @@ with st.sidebar:
     st.page_link("pages/02_용어정리.py", label="용어정리")
     st.page_link("pages/03_다운로드공간.py", label="다운로드공간")
     st.page_link("pages/04_현재작업.py", label="현재작업")
+    st.page_link("pages/05_프로젝트흐름.py", label="프로젝트흐름")
     st.divider()
     st.caption("저장 폴더")
     st.code(str(DOWNLOAD_DIR))
@@ -79,3 +80,4 @@ else:
                 key=f"download_{path.name}",
                 width="stretch",
             )
+

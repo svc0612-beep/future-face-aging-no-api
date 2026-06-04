@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -222,6 +222,7 @@ with st.sidebar:
     st.page_link("pages/02_용어정리.py", label="용어정리")
     st.page_link("pages/03_다운로드공간.py", label="다운로드공간")
     st.page_link("pages/04_현재작업.py", label="현재작업")
+    st.page_link("pages/05_프로젝트흐름.py", label="프로젝트흐름")
 
 st.markdown('<h1 class="page-title">현재작업</h1>', unsafe_allow_html=True)
 st.markdown(
@@ -351,3 +352,4 @@ with st.expander("콘솔 로그 최근 내용"):
 
 with st.expander("상태 원본 JSON"):
     st.json(status)
+

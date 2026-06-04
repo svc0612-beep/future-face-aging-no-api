@@ -393,6 +393,7 @@ with st.sidebar:
     st.page_link("pages/02_용어정리.py", label="용어정리")
     st.page_link("pages/03_다운로드공간.py", label="다운로드공간")
     st.page_link("pages/04_현재작업.py", label="현재작업")
+    st.page_link("pages/05_프로젝트흐름.py", label="프로젝트흐름")
     st.divider()
     st.caption("사용 모델")
     st.write("나이 예측: ConvNeXt-Tiny")
@@ -495,3 +496,4 @@ if "analysis_result" in st.session_state:
         """,
         unsafe_allow_html=True,
     )
+
