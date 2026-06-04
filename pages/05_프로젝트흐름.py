@@ -11,6 +11,9 @@ st.set_page_config(
 st.markdown(
     """
     <style>
+    [data-testid="stSidebarNav"] {
+        display: none;
+    }
     .block-container {
         max-width: 1180px;
         padding-top: 1.4rem;

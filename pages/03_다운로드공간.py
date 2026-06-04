@@ -16,6 +16,17 @@ st.set_page_config(
     layout="wide",
 )
 
+st.markdown(
+    """
+    <style>
+    [data-testid="stSidebarNav"] {
+        display: none;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 
 def safe_filename(name: str) -> str:
     cleaned = re.sub(r'[<>:"/\\\\|?*]', "_", name).strip()
