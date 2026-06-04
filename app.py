@@ -68,6 +68,30 @@ st.markdown(
         padding: 1rem 1.1rem;
         margin: .8rem 0 1rem;
     }
+    .server-notice {
+        border: 1px solid #b9cff7;
+        background: #f3f7ff;
+        color: #243554;
+        border-radius: 8px;
+        padding: 1rem 1.1rem;
+        margin: 1rem 0;
+    }
+    .server-notice strong {
+        color: #174ea6;
+    }
+    .server-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: .55rem .9rem;
+        margin-top: .75rem;
+        font-size: .94rem;
+    }
+    .server-grid div {
+        border: 1px solid #d7e2f8;
+        background: #ffffff;
+        border-radius: 8px;
+        padding: .72rem .8rem;
+    }
     .step-row {
         display: grid;
         grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -135,7 +159,8 @@ st.markdown(
     }
     @media (max-width: 850px) {
         .step-row,
-        .tip-grid {
+        .tip-grid,
+        .server-grid {
             grid-template-columns: 1fr;
         }
     }
@@ -382,7 +407,7 @@ st.markdown(f'<h1 class="app-title">{APP_TITLE}</h1>', unsafe_allow_html=True)
 st.markdown(
     """
     <div class="app-subtitle">
-    카메라 촬영 후 이미지가 저장되면 카메라 화면을 닫고,
+    현재 이 웹앱은 개발자 로컬 PC에서 실행되는 테스트 서버입니다.
     분석 버튼을 눌러 현재 나이·성별·미래 얼굴 시뮬레이션 결과를 확인합니다.
     </div>
     """,
@@ -405,12 +430,24 @@ with st.sidebar:
 
 st.markdown(
     """
+    <div class="server-notice">
+      <strong>로컬 서버 테스트 안내</strong><br>
+      이 웹앱은 현재 Streamlit Cloud 단독 서버가 아니라 개발자 PC에서 실행되는 임시 테스트 서버입니다.
+      사용자는 HTTPS 터널 주소로 접속하지만, 실제 분석 처리는 개발자 PC에서 실행됩니다.
+      <div class="server-grid">
+        <div>서버 PC가 꺼지거나 절전모드에 들어가면 접속이 중단됩니다.</div>
+        <div>ngrok 터널 창 또는 Streamlit 실행 창이 꺼지면 서비스가 종료됩니다.</div>
+        <div>촬영 또는 업로드한 얼굴 이미지는 분석을 위해 서버 PC로 전송됩니다.</div>
+        <div>카메라 권한 요청이 뜨면 허용해야 촬영 기능을 사용할 수 있습니다.</div>
+      </div>
+    </div>
+
     <div class="step-band">
       <div class="step-row">
-        <div class="step-item"><div class="step-num">1단계</div>카메라로 얼굴 사진 촬영</div>
-        <div class="step-item"><div class="step-num">2단계</div>촬영 이미지 저장 후 카메라 닫힘</div>
-        <div class="step-item"><div class="step-num">3단계</div>분석 버튼으로 나이·성별 예측</div>
-        <div class="step-item"><div class="step-num">4단계</div>미래 얼굴 5장 출력</div>
+        <div class="step-item"><div class="step-num">1단계</div>카메라 권한 허용 후 얼굴 사진 촬영</div>
+        <div class="step-item"><div class="step-num">2단계</div>촬영 이미지가 서버 PC로 전송되어 저장</div>
+        <div class="step-item"><div class="step-num">3단계</div>로컬 모델로 현재 나이·성별 예측</div>
+        <div class="step-item"><div class="step-num">4단계</div>미래 얼굴 시뮬레이션 결과 출력</div>
       </div>
     </div>
     """,
@@ -437,6 +474,7 @@ st.markdown(
     <div class="notice">
     AI 추정 나이는 실제 나이가 아니라 이미지에서 보이는 시각적 나이입니다.
     미래 얼굴 결과는 실제 미래 모습 예측이 아니라 AI 기반 재미용 시뮬레이션입니다.
+    개인정보가 포함된 민감한 이미지는 촬영하거나 업로드하지 않는 것을 권장합니다.
     </div>
     """,
     unsafe_allow_html=True,
