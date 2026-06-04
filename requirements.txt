@@ -4,6 +4,6 @@ torchvision
 pillow
 pandas
 numpy
-opencv-python
+opencv-python-headless
 matplotlib
 tqdm
