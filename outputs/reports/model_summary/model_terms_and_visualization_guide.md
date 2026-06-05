@@ -125,6 +125,8 @@
 
 ### 5.1 SAM
 
+- 선정 이유: SAM은 StyleGAN 기반 얼굴 나이 변환 모델로 target age를 직접 지정할 수 있어 10~50년 뒤 결과를 만들기 적합했습니다. 장점은 주름·피부 질감 변화가 보인다는 점이고, 단점은 FFHQ 기반이라 한국인 얼굴·성별 특징이 완벽히 유지되지 않을 수 있다는 점입니다.
+
 - 풀네임: Style-based Age Manipulation
 - 한국어 발음: 샘
 - 관련 논문명: Only a Matter of Style: Age Transformation Using a Style-Based Regression Model
