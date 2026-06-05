@@ -805,14 +805,58 @@
 
       <section id="aging-models">
         <h2>미래 얼굴 모델</h2>
+        <p class="section-note">아래 표는 미래 얼굴 생성 후보들을 같은 기준으로 비교한 자료입니다. 최종 선정 이유 문장은 발표/보고서 목적에 맞게 사용자가 직접 작성할 수 있도록 비워두었습니다.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>모델</th>
+              <th>풀네임 / 발음</th>
+              <th>장점</th>
+              <th>단점</th>
+              <th>현재 판단</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>SAM</td>
+              <td>Style-based Age Manipulation / 샘</td>
+              <td>target age를 직접 넣어 10년~50년 뒤 결과를 만들 수 있고, API 없이 로컬에서 실행 가능합니다. LATS보다 얼굴 붕괴가 적고 주름·피부 질감 변화가 비교적 잘 보입니다.</td>
+              <td>FFHQ 중심 공개 가중치라 한국인 얼굴 정체성, 성별 특징, 얼굴형 유지가 완벽하지 않을 수 있습니다. 모델이 무겁고 실행 속도도 느립니다.</td>
+              <td>현재 통합 후보. 단, 결과 문구는 반드시 재미용 AI 시뮬레이션으로 안내합니다.</td>
+            </tr>
+            <tr>
+              <td>LATS</td>
+              <td>Lifespan Age Transformation Synthesis / 래츠</td>
+              <td>여러 나이대 얼굴 변환을 목표로 한 공개 연구 모델이라 프로젝트 목표와 방향은 유사합니다.</td>
+              <td>로컬 샘플에서 한국인 얼굴이 서양인처럼 바뀌거나 성별·수염·얼굴형이 부자연스럽게 변하는 문제가 컸습니다.</td>
+              <td>최종 생성기에서 제외. 실패 후보로 기록합니다.</td>
+            </tr>
+            <tr>
+              <td>CUSP</td>
+              <td>Custom Structure Preservation in Face Aging / 커스프</td>
+              <td>얼굴 구조 보존을 강조하는 연구라 눈·코·윤곽 유지라는 목표와 잘 맞습니다.</td>
+              <td>공식 가중치 확보가 어렵고 Docker/연구 코드 기반이라 현재 MVP에 바로 연결하기 어렵습니다.</td>
+              <td>보류. 추후 가중치와 실행 환경이 확보되면 재검토합니다.</td>
+            </tr>
+            <tr>
+              <td>Rule-based Aging Filter</td>
+              <td>규칙 기반 에이징 필터</td>
+              <td>가중치 없이 빠르게 실행되고, SAM 실패 시 최소한의 결과를 보여주는 fallback으로 사용할 수 있습니다.</td>
+              <td>진짜 생성형 AI가 아니라서 얼굴 구조 변화가 약하거나 피부 효과가 어색할 수 있습니다.</td>
+              <td>백업용. 최종 품질 기준 모델은 아닙니다.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="callout">
+          <strong>선정 이유 작성 공간</strong><br>
+          이 부분은 사용자가 직접 작성합니다. 예: 최종 모델을 선택한 이유, 프로젝트 목표와 맞는 점, 테스트에서 확인한 한계와 보완 문구 등을 본인 표현으로 정리합니다.
+        </div>
         <div class="grid">
           <article class="term-card" data-keywords="SAM Style-based Age Manipulation 샘">
             <div class="term-head"><div class="term-title">SAM</div><div class="pronounce">샘</div></div>
             <span class="tag good">현재 후보</span>
             <p>Style-based Age Manipulation. 입력 얼굴을 target age 조건에 맞춰 변환하는 얼굴 에이징 모델입니다.</p>
-            <div class="callout">
-              선정 이유: SAM은 StyleGAN 기반 얼굴 나이 변환 모델로 target age를 직접 지정할 수 있어 10~50년 뒤 결과를 만들기 적합했습니다. 장점은 주름·피부 질감 변화가 보인다는 점이고, 단점은 FFHQ 기반이라 한국인 얼굴·성별 특징이 완벽히 유지되지 않을 수 있다는 점입니다.
-            </div>
+
             <ul>
               <li>가중치: `sam_ffhq_aging.pt`</li>
               <li>로컬 실행 성공</li>
