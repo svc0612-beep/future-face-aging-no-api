@@ -1,8 +1,8 @@
-﻿from base64 import b64encode
+from base64 import b64encode
 from pathlib import Path
+import re
 
 import streamlit as st
-import streamlit.components.v1 as components
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -46,6 +46,15 @@ def embed_local_images(html: str) -> str:
             )
     return html
 
+def extract_html_fragment(html: str) -> str:
+    style_match = re.search(r"<style>(.*?)</style>", html, flags=re.IGNORECASE | re.DOTALL)
+    body_match = re.search(r"<body[^>]*>(.*?)</body>", html, flags=re.IGNORECASE | re.DOTALL)
+
+    style = style_match.group(1) if style_match else ""
+    body = body_match.group(1) if body_match else html
+    body = re.sub(r"<script[^>]*>.*?</script>", "", body, flags=re.IGNORECASE | re.DOTALL)
+
+    return f"<style>{style}</style>{body}"
 
 st.title("용어정리")
 st.caption("프로젝트에서 사용한 모델, 데이터, 학습 지표, 그래프 해석을 정리한 페이지입니다.")
@@ -64,5 +73,5 @@ if not GLOSSARY_PATH.exists():
     st.stop()
 
 html = embed_local_images(GLOSSARY_PATH.read_text(encoding="utf-8"))
-components.html(html, height=1400, scrolling=True)
+st.markdown(extract_html_fragment(html), unsafe_allow_html=True)
 
