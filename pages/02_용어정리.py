@@ -73,5 +73,5 @@ if not GLOSSARY_PATH.exists():
     st.stop()
 
 html = embed_local_images(GLOSSARY_PATH.read_text(encoding="utf-8"))
-st.markdown(extract_html_fragment(html), unsafe_allow_html=True)
+st.html(extract_html_fragment(html))
 
