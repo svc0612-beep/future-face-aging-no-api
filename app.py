@@ -477,7 +477,8 @@ st.markdown(
     <div class="notice">
     AI 추정 나이는 실제 나이가 아니라 이미지에서 보이는 시각적 나이입니다.
     미래 얼굴 결과는 실제 미래 모습 예측이 아니라 AI 기반 재미용 시뮬레이션입니다.
-    개인정보가 포함된 민감한 이미지는 촬영하거나 업로드하지 않는 것을 권장합니다.
+    촬영 또는 업로드한 이미지는 분석을 위해 서버 PC로 전송됩니다.
+    개인정보가 포함된 민감한 이미지는 사용하지 않는 것을 권장합니다.
     </div>
     """,
     unsafe_allow_html=True,
@@ -485,22 +486,46 @@ st.markdown(
 
 
 if "captured_image" not in st.session_state:
-    st.subheader("1. 카메라 촬영")
-    st.write("아래 카메라 화면에서 **이미지 촬영** 버튼을 눌러 얼굴 사진을 저장하세요.")
-    camera_file = st.camera_input("얼굴 사진 촬영")
+    st.subheader("1. 얼굴 이미지 입력")
+    st.write("카메라로 촬영하거나, 웹캠이 작동하지 않으면 얼굴 이미지를 업로드하세요.")
 
-    if camera_file is not None:
-        captured = Image.open(camera_file).convert("RGB")
-        store_captured_image(captured, "카메라 촬영")
-        st.rerun()
+    input_tabs = st.tabs(["카메라 촬영", "이미지 업로드"])
+    with input_tabs[0]:
+        st.write("아래 카메라 화면에서 **이미지 촬영** 버튼을 눌러 얼굴 사진을 저장하세요.")
+        camera_file = st.camera_input("얼굴 사진 촬영")
 
-    st.info("촬영 후 이미지가 자동으로 저장되고 카메라 화면은 닫힙니다.")
+        if camera_file is not None:
+            captured = Image.open(camera_file).convert("RGB")
+            store_captured_image(captured, "카메라 촬영")
+            st.rerun()
+
+        st.info("촬영 후 이미지가 자동으로 저장되고 카메라 화면은 닫힙니다.")
+
+    with input_tabs[1]:
+        st.write("카메라가 작동하지 않거나 다른 사진으로 테스트하려면 얼굴 이미지를 업로드하세요.")
+        uploaded_file = st.file_uploader(
+            "얼굴 이미지 업로드",
+            type=["jpg", "jpeg", "png", "webp"],
+            accept_multiple_files=False,
+        )
+
+        if uploaded_file is not None:
+            uploaded = Image.open(uploaded_file).convert("RGB")
+            store_captured_image(uploaded, "이미지 업로드")
+            st.rerun()
+
+        st.info("업로드한 이미지는 서버 PC에 저장된 뒤 기존 분석 흐름과 동일하게 처리됩니다. DB는 사용하지 않습니다.")
+
     st.stop()
 
 
 captured_image = st.session_state.captured_image
-st.subheader("1. 저장된 촬영 이미지")
-st.image(captured_image, caption=f"저장 경로: {st.session_state.captured_path}", width="stretch")
+st.subheader("1. 저장된 얼굴 이미지")
+st.image(
+    captured_image,
+    caption=f"입력 방식: {st.session_state.captured_source} / 저장 경로: {st.session_state.captured_path}",
+    width="stretch",
+)
 
 button_cols = st.columns([1, 1, 3])
 with button_cols[0]:
